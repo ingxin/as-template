@@ -1,6 +1,6 @@
-package org.jetbrains.plugins.template.services
+package com.github.ingxin.astemplate.services
 
-import org.jetbrains.plugins.template.MyBundle
+import com.github.ingxin.astemplate.MyBundle
 
 class MyApplicationService {
 
