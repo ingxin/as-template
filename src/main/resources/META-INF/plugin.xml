@@ -1,18 +1,26 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>com.github.ingxin.astemplate</id>
-    <name>as-template</name>
+    <id>me.ingxin.android</id>
+    <name>AndroidTemplate</name>
     <vendor>ingxin</vendor>
 
     <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.android</depends>
+    <depends>org.jetbrains.kotlin</depends>
+    <depends>com.intellij.modules.java</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.ingxin.astemplate.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.ingxin.astemplate.services.MyProjectService"/>
+        <applicationService serviceImplementation="me.ingxin.android.template.services.MyApplicationService"/>
+        <projectService serviceImplementation="me.ingxin.android.template.services.MyProjectService"/>
     </extensions>
 
     <applicationListeners>
-        <listener class="com.github.ingxin.astemplate.listeners.MyProjectManagerListener"
+        <listener class="me.ingxin.android.template.listeners.MyProjectManagerListener"
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </applicationListeners>
+
+    <extensions defaultExtensionNs="com.android.tools.idea.wizard.template">
+        <wizardTemplateProvider implementation="template.SamplePluginTemplateProviderImpl" />
+    </extensions>
+
 </idea-plugin>

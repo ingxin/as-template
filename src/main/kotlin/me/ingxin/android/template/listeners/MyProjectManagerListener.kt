@@ -1,9 +1,9 @@
-package com.github.ingxin.astemplate.listeners
+package me.ingxin.android.template.listeners
 
 import com.intellij.openapi.components.service
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.project.ProjectManagerListener
-import com.github.ingxin.astemplate.services.MyProjectService
+import me.ingxin.android.template.services.MyProjectService
 
 internal class MyProjectManagerListener : ProjectManagerListener {
 

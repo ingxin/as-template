@@ -1,6 +1,7 @@
-package com.github.ingxin.astemplate.services
+package me.ingxin.android.template.services
 
-import com.github.ingxin.astemplate.MyBundle
+import me.ingxin.android.template.MyBundle
+
 
 class MyApplicationService {
 

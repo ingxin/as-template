@@ -1,4 +1,4 @@
-package com.github.ingxin.astemplate
+package me.ingxin.android.template
 
 import com.intellij.DynamicBundle
 import org.jetbrains.annotations.NonNls
