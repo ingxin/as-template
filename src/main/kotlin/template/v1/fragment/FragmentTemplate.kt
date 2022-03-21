@@ -23,36 +23,40 @@ val FragmentTemplate
         )
 
         val fragmentName = stringParameter {
-            name = "Fragment Name"
+            name = "FragmentName（只输入名字，不要含Fragment后缀）"
             default = "Main"
-            help = "只输入名字，不要包含Fragment"
+            help = "只输入名字，不要Fragment后缀"
+            constraints = listOf(Constraint.NONEMPTY)
+        }
+
+        val resourcePrefix = stringParameter {
+            name = "resourcePrefix（资源文件前缀）"
+            default = "app"
+            help = "输入资源文件前缀"
             constraints = listOf(Constraint.NONEMPTY)
         }
 
         val layoutName = stringParameter {
-            name = "Layout Name"
+            name = "LayoutName"
             default = "fragment_main"
             help = "请输入布局的名字"
             constraints = listOf(Constraint.LAYOUT, Constraint.UNIQUE, Constraint.NONEMPTY)
             suggest = {
-                fragmentToLayout(fragmentName.value.toLowerCase())
+//                val sb = StringBuilder()
+//                for ((index, chr) in fragmentName.value.withIndex()) {
+//                    if (chr.isUpperCase() && index != 0) {
+//                        sb.append("_")
+//                    }
+//                    sb.append(chr.toLowerCase())
+//                }
+                "${resourcePrefix.value}_fg_${camelCaseToUnderlines(fragmentName.value)}"
             }
         }
 
-        //点击位置的包名
-        val packageName = stringParameter {
-            name = "Package name"
-            visible = { !isNewModule }
-            default = "com.mycompany.myapp"
-            constraints = listOf(Constraint.PACKAGE)
-            suggest = { packageName }
-        }
-
-        widgets(
-            TextFieldWidget(fragmentName), TextFieldWidget(layoutName)/*, PackageNameWidget(packageName)*/)
+        widgets(TextFieldWidget(fragmentName), TextFieldWidget(resourcePrefix), TextFieldWidget(layoutName))
 
         recipe = { data: TemplateData ->
-            fragmentRecipe(data as ModuleTemplateData, fragmentName.value, layoutName.value, packageName.value)
+            fragmentRecipe(data as ModuleTemplateData, fragmentName.value, layoutName.value)
         }
 
     }

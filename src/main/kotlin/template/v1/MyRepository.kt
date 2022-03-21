@@ -3,8 +3,8 @@ package template.v1
 /**
  * repository模板
  */
-fun repositoryKt(applicationPackage: String?, prefixName: String) = """
-package $applicationPackage.repository
+fun repositoryKt(appPackage: String?, prefixName: String) = """
+package $appPackage.repository
 
 import com.sobey.fc.component.core.app.BaseRepository
 
